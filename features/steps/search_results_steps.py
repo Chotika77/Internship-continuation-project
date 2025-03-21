@@ -19,5 +19,5 @@ def verify_filter_status(context):
 
 
     for product in all_products:
-        status = product.find_element(*SALES_STATUS).text
-        assert status != '', 'Product title not shown'
+        status_tag = product.find_element(*SALES_STATUS).text
+        assert status_tag == "Presale(EOI)", f'Expected "Presale(EOI)" but got {status_tag.text}'
