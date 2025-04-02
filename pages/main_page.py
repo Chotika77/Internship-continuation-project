@@ -6,13 +6,18 @@ from pages.base_page import Page
 
 class MainPage(Page):
     FILTER_SELECTION = (By.ID, "Location-2")
+    SETTINGS_OPTION = (By.XPATH, "//div[text()='Settings']")
     def open_main(self):
         self.open('https://soft.reelly.io/')
         sleep(3)
 
-    def select_presale(self):
-      sleep(5)
-      dd = self.find_element(*self.FILTER_SELECTION)
-      select = Select(dd)
-      select.select_by_value("Presale(EOI)")
-      sleep(5)
+    # def select_presale(self):
+    #   sleep(5)
+    #   dd = self.find_element(*self.FILTER_SELECTION)
+    #   select = Select(dd)
+    #   select.select_by_value("Presale(EOI)")
+    #   sleep(5)
+
+    def click_settings(self):
+        self.click(*self.SETTINGS_OPTION)
+        sleep(3)
