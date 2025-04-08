@@ -5,7 +5,7 @@ Feature: Tests for the main page
     Given open the main page
     When Log in to the page
     And change the filter to presale
-    Then Verify each product contains the Presale
+    Then Verify each product contains Presale(EOI)
 
 
   Scenario: User can go to settings and see the right number of UI elements
@@ -15,3 +15,10 @@ Feature: Tests for the main page
     Then Verify the right page opens
     Then Verify there are 13 options for the settings
     Then Verify “Connect the company” button is available
+
+
+  Scenario: User can filter by Out of Stock
+    Given open the main page
+    When Log in to the page
+    And change the filter to Out of Stock
+    Then Verify each product contains Out of stock

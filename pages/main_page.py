@@ -11,13 +11,20 @@ class MainPage(Page):
         self.open('https://soft.reelly.io/')
         sleep(3)
 
-    # def select_presale(self):
-    #   sleep(5)
-    #   dd = self.find_element(*self.FILTER_SELECTION)
-    #   select = Select(dd)
-    #   select.select_by_value("Presale(EOI)")
-    #   sleep(5)
+    def select_presale(self):
+      sleep(5)
+      dd = self.find_element(*self.FILTER_SELECTION)
+      select = Select(dd)
+      select.select_by_value("Presale(EOI)")
+      sleep(5)
 
     def click_settings(self):
         self.click(*self.SETTINGS_OPTION)
         sleep(3)
+
+    def select_out_of_stock(self):
+      sleep(5)
+      dd = self.find_element(*self.FILTER_SELECTION)
+      select = Select(dd)
+      select.select_by_value("Out of stock")
+      sleep(5)

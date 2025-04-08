@@ -13,3 +13,7 @@ def select_presale(context):
 @when('Click on settings option')
 def click_settings(context):
     context.app.main_page.click_settings()
+
+@when('change the filter to Out of Stock')
+def select_out_of_stock(context):
+    context.app.main_page.select_out_of_stock()

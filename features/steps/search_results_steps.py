@@ -7,8 +7,8 @@ SALES_STATUS = (By.CSS_SELECTOR, "div[wized='projectStatus']")
 
 
 
-@then('Verify each product contains the Presale')
-def verify_filter_status(context):
+@then('Verify each product contains {expected_status}')
+def verify_filter_status(context, expected_status):
     context.driver.execute_script("window.scrollBy(0,2000)", "")
     sleep(4)
     context.driver.execute_script("window.scrollBy(0,2000)", "")
@@ -20,8 +20,8 @@ def verify_filter_status(context):
 
 
     for product in all_products:
-        status_tag = product.find_element(*SALES_STATUS).text
-        assert status_tag == "Presale(EOI)", f'Expected "Presale(EOI)" but got {status_tag.text}'
+        status_text = product.find_element(*SALES_STATUS).text.strip()
+        assert status_text == expected_status, f'Expected {expected_status} but got {status_text}'
 
 
 @then('Verify the right page opens')
