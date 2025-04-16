@@ -4,6 +4,10 @@ from selenium.webdriver.common.by import By
 
 LISTINGS = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
 SALES_STATUS = (By.CSS_SELECTOR, "div[wized='projectStatus']")
+SECONDARY_LISTINGS = (By.CSS_SELECTOR,"[wized*='listingCard']")
+SALES_TAG = (By.XPATH, "//div[text()= 'Want to buy']")
+
+
 
 
 
@@ -24,9 +28,13 @@ def verify_filter_status(context, expected_status):
         assert status_text == expected_status, f'Expected {expected_status} but got {status_text}'
 
 
+# @then('Verify the right page opens')
+# def verify_right_page_opens(context):
+#     context.app.search_results_page.verify_partial_url("settings")
+
 @then('Verify the right page opens')
 def verify_right_page_opens(context):
-    context.app.search_results_page.verify_partial_url("settings")
+    context.app.search_results_page.verify_partial_url("secondary-listings")
 
 
 @then('Verify there are 13 options for the settings')
@@ -41,4 +49,20 @@ def verify_settings_option_count(context):
 @then ('Verify “Connect the company” button is available')
 def verify_connect_button(context):
     context.app.search_results_page.verify_connect_button('Connect the company')
+
+@then ('Verify all cards have “Want to buy” tag')
+def verify_all_card_tags(context):
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+    sleep(4)
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+
+    all_sec_products = context.driver.find_elements(*SECONDARY_LISTINGS)
+
+    for product in all_sec_products:
+        status_tag_text = product.find_elements(*SALES_TAG)[0].text.strip()
+        assert status_tag_text == "Want to buy", f'Expected "Want to buy"  but got {status_tag_text}'
+
+
+
+
 

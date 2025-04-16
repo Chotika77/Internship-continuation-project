@@ -8,8 +8,11 @@ class SearchResultsPage(Page):
     SETTINGS_OPTIONS = (By.CSS_SELECTOR, "[class*='page-setting-block']")
     CONNECT_BUTTON = (By.XPATH, "//div[text()='Connect the company']")
 
+    # def verify_page(self):
+    #     self.verify_partial_url("settings")
+
     def verify_page(self):
-        self.verify_partial_url("settings")
+        self.verify_partial_url("secondary-listings")
 
     def get_number_of_settings_options(self):
         options = self.find_elements(*self.SETTINGS_OPTIONS)
@@ -18,6 +21,7 @@ class SearchResultsPage(Page):
     def verify_connect_button(self,expected_text):
         self.verify_text(expected_text, *self.CONNECT_BUTTON)
 
+    # def verify_all_card_tags(self):
 
 
 

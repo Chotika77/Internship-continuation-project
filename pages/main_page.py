@@ -7,6 +7,7 @@ from pages.base_page import Page
 class MainPage(Page):
     FILTER_SELECTION = (By.ID, "Location-2")
     SETTINGS_OPTION = (By.XPATH, "//div[text()='Settings']")
+    SECONDARY_OPTION = (By.XPATH, "//div[text()='Secondary']")
     def open_main(self):
         self.open('https://soft.reelly.io/')
         sleep(3)
@@ -28,3 +29,7 @@ class MainPage(Page):
       select = Select(dd)
       select.select_by_value("Out of stock")
       sleep(5)
+
+    def click_secondary(self):
+        self.click(*self.SECONDARY_OPTION)
+        sleep(3)

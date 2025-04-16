@@ -17,3 +17,7 @@ def click_settings(context):
 @when('change the filter to Out of Stock')
 def select_out_of_stock(context):
     context.app.main_page.select_out_of_stock()
+
+@when ('Click on “Secondary” option at the left side menu')
+def click_secondary(context):
+    context.app.main_page.click_secondary()
