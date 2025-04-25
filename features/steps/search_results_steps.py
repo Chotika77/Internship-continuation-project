@@ -63,6 +63,8 @@ def verify_all_card_tags(context):
         assert status_tag_text == "Want to buy", f'Expected "Want to buy"  but got {status_tag_text}'
 
 
-
+@then('Verify the price in all cards is inside the range {min_price} - {max_price}')
+def step_impl(context, min_price, max_price):
+    context.app.search_results_page.verify_price_within_range(min_price, max_price)
 
 

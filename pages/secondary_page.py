@@ -8,7 +8,11 @@ class SecondaryPage(Page):
     FILTER_BUTTON = (By.CSS_SELECTOR, ".filter-button")
     WANT_TO_BUY_BUTTON = (By. XPATH, "//div[text()='Want to buy']")
     # APPLY_FILTER = (By. XPATH, "//div[text()='Apply filter']")
+
+    MIN_PRICE_INPUT = (By.XPATH, "//div[@class='select-text'][text()='from']/following-sibling::input[@type='text']")
+    MAX_PRICE_INPUT = (By.XPATH,  "//div[@class='select-text'][text()='to']/following-sibling::input[@type='text']")
     APPLY_FILTER = (By.CSS_SELECTOR, "a[class ='button-filter w-button']")
+
 
 
 
@@ -20,6 +24,12 @@ class SecondaryPage(Page):
 
     def click_apply_filter(self):
         self.click(*self.APPLY_FILTER)
+
+    def set_min_price_filter(self, price):
+        self.input_text(self.MIN_PRICE_INPUT, price)
+
+    def set_max_price_filter(self, price):
+        self.input_text(self.MAX_PRICE_INPUT, price)
 
 
 

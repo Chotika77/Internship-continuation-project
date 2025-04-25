@@ -23,8 +23,12 @@ class Page:
     #def input_text(self, *locator, text):
     #    self.driver.find_element(*locator).send_keys(text)
 
+
+
     def input_text(self, text, *locator):
-        self.driver.find_element(*locator).send_keys(text)
+        self.wait_for_element_to_appear(*locator)  # Wait for the element to be visible
+        element = self.driver.find_element(*locator)
+        element.send_keys(text)
 
     def wait_to_be_clickable(self, *locator):
         self.wait.until(EC.element_to_be_clickable(locator),
@@ -39,6 +43,8 @@ class Page:
             EC.visibility_of_element_located(locator),
         message = f'element {locator} did not appear'
         )
+
+
 
     def get_current_window(self):
         return self.driver.current_window_handle
