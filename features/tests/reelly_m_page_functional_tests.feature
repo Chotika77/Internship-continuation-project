@@ -41,6 +41,6 @@ Feature: Tests for the main page
     Then Verify the right page opens
     When Click on Filters
     When Filter the products by price range from 1200000 to 2000000 AED
-    Then Verify the price in all cards is inside the range (1200000 - 2000000)
+    Then Verify the price in all cards is inside the range 1200000 - 2000000
 
 

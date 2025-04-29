@@ -26,10 +26,16 @@ class SecondaryPage(Page):
         self.click(*self.APPLY_FILTER)
 
     def set_min_price_filter(self, price):
-        self.input_text(self.MIN_PRICE_INPUT, price)
+        # self.input_text(self.MIN_PRICE_INPUT, price)
+        sleep(3)
+        element = self.find_element(*self.MIN_PRICE_INPUT)
+        element.send_keys(price)
+
 
     def set_max_price_filter(self, price):
-        self.input_text(self.MAX_PRICE_INPUT, price)
+        # self.input_text(self.MAX_PRICE_INPUT, price)
+        element = self.find_element(*self.MAX_PRICE_INPUT)
+        element.send_keys(price)
 
 
 
