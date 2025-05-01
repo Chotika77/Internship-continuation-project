@@ -21,3 +21,7 @@ def select_out_of_stock(context):
 @when ('Click on “Secondary” option at the left side menu')
 def click_secondary(context):
     context.app.main_page.click_secondary()
+
+@when ('Click on off plan option at the left side menu')
+def click_off_plan(context):
+    context.app.main_page.click_off_plan()

@@ -43,4 +43,12 @@ Feature: Tests for the main page
     When Filter the products by price range from 1200000 to 2000000 AED
     Then Verify the price in all cards is inside the range 1200000 - 2000000
 
+  Scenario: User can open the off plan page and go through the pagination
+    Given open the main page
+    When Log in to the page
+    And Click on off plan option at the left side menu
+    Then Verify the right page opens
+    When Go to the final page using the pagination button
+    And Go back to the first page using the pagination button
+
 

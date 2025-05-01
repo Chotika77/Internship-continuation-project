@@ -31,10 +31,14 @@ def verify_filter_status(context, expected_status):
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_partial_url("settings")
+#
+# @then('Verify the right page opens')
+# def verify_right_page_opens(context):
+#     context.app.search_results_page.verify_partial_url("secondary-listings")
 
 @then('Verify the right page opens')
 def verify_right_page_opens(context):
-    context.app.search_results_page.verify_partial_url("secondary-listings")
+    context.app.search_results_page.verify_partial_url("off-plan")
 
 
 @then('Verify there are 13 options for the settings')

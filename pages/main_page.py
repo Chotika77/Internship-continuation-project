@@ -8,6 +8,11 @@ class MainPage(Page):
     FILTER_SELECTION = (By.ID, "Location-2")
     SETTINGS_OPTION = (By.XPATH, "//div[text()='Settings']")
     SECONDARY_OPTION = (By.XPATH, "//div[text()='Secondary']")
+    OFF_PLAN_OPTION = (By.XPATH, "//a[@href='/off-plan' and @class='menu-button-block w-inline-block']")
+
+
+
+
     def open_main(self):
         self.open('https://soft.reelly.io/')
         sleep(3)
@@ -32,4 +37,8 @@ class MainPage(Page):
 
     def click_secondary(self):
         self.click(*self.SECONDARY_OPTION)
+        sleep(3)
+
+    def click_off_plan(self):
+        self.click(*self.OFF_PLAN_OPTION)
         sleep(3)

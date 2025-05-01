@@ -13,8 +13,11 @@ class SearchResultsPage(Page):
     # def verify_page(self):
     #     self.verify_partial_url("settings")
 
+    # def verify_page(self):
+    #     self.verify_partial_url("secondary-listings")
+
     def verify_page(self):
-        self.verify_partial_url("secondary-listings")
+        self.verify_partial_url("off-plan")
 
     def get_number_of_settings_options(self):
         options = self.find_elements(*self.SETTINGS_OPTIONS)
