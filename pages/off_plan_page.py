@@ -7,37 +7,48 @@ from pages.base_page import Page
 class OffPlanPage(Page):
     NEXT_BUTTON_LOCATOR = (By.XPATH, "//div[text()='Next page']")
     PREVIOUS_BUTTON_LOCATOR = (By.XPATH,"//div[text()='Prev. page']")
-    TOTAL_PAGE_NUMBER_LOCATOR = (By.XPATH, "//div[@class='pagination-text']/div[@wized='totalPageProperties']")
-    CURRENT_PAGE_NUMBER_LOCATOR = (By.XPATH, "//div[@class='pagination-text']/div[@wized='currentPageProperties']")
+    # TOTAL_PAGE_NUMBER_LOCATOR = (By.XPATH, "//div[@class='pagination-text']/div[@wized='totalPageProperties']")
+    # CURRENT_PAGE_NUMBER_LOCATOR = (By.XPATH, "//div[@class='pagination-text']/div[@wized='currentPageProperties']")
 
-    def get_active_page_number(self):
-        return int(self.find_element(*self.CURRENT_PAGE_NUMBER_LOCATOR).text)
+    # def get_active_page_number(self):
+    #     return int(self.find_element(*self.CURRENT_PAGE_NUMBER_LOCATOR).text)
 
-    def get_total_page_count(self):
-        return int(self.find_element(*self.TOTAL_PAGE_NUMBER_LOCATOR).text)
+    # def get_total_page_count(self):
+    #     return int(self.find_element(*self.TOTAL_PAGE_NUMBER_LOCATOR).text)
+
+    # def navigate_to_final_page(self):
+    #     total_pages = self.get_total_page_count()
+    #     current_page = self.get_active_page_number()
+    #     while current_page < total_pages:
+    #         self.navigate_to_next_page()
+    #         sleep(3)
+    #         current_page = self.get_active_page_number()
+    #     print(f"Reached the final page ({total_pages}).")
 
     def navigate_to_final_page(self):
-        total_pages = self.get_total_page_count()
-        current_page = self.get_active_page_number()
-        while current_page < total_pages:
-            self.navigate_to_next_page()
-            sleep(1)  # Adjust sleep time as needed
-            current_page = self.get_active_page_number()
-        print(f"Reached the final page ({total_pages}).")
+        total_pages = 1
+        for page in range(total_pages + 1):
+            self.wait_to_be_clickable_click(*self.NEXT_BUTTON_LOCATOR)
 
     def navigate_to_first_page(self):
-        current_page = self.get_active_page_number()
-        while current_page > 1:
-            self.navigate_to_previous_page()
-            sleep(1)  # Adjust sleep time as needed
-            current_page = self.get_active_page_number()
-        print("Reached the first page.")
+        total_pages = 1
+        for page in range(total_pages + 1):
+            self.wait_to_be_clickable_click(*self.PREVIOUS_BUTTON_LOCATOR)
 
-    def navigate_to_next_page(self):
-        self.wait_to_be_clickable_click(*self.NEXT_BUTTON_LOCATOR)
 
-    def navigate_to_previous_page(self):
-        self.wait_to_be_clickable_click(*self.PREVIOUS_BUTTON_LOCATOR)
+    # def navigate_to_first_page(self):
+    #     current_page = self.get_active_page_number()
+    #     while current_page > 1:
+    #         self.navigate_to_previous_page()
+    #         sleep(3)
+    #         current_page = self.get_active_page_number()
+    #     print("Reached the first page.")
+    #
+    # def navigate_to_next_page(self):
+    #     self.wait_to_be_clickable_click(*self.NEXT_BUTTON_LOCATOR)
+    #
+    # def navigate_to_previous_page(self):
+    #     self.wait_to_be_clickable_click(*self.PREVIOUS_BUTTON_LOCATOR)
 
     # def _is_next_button_enabled(self):
     #     return True
