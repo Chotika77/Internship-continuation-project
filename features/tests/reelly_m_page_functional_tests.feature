@@ -51,4 +51,12 @@ Feature: Tests for the main page
     When Go to the final page using the pagination button
     And Go back to the first page using the pagination button
 
+  Scenario: User can open market tab and filter by developers option
+    Given open the main page
+    When Log in to the page
+    When Click on “market” at the left side menu
+    Then Verify the right page opens
+    When Click on Developers filter at the top of the page
+    Then Verify all cards has the license tag
+
 

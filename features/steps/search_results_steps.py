@@ -6,6 +6,9 @@ LISTINGS = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
 SALES_STATUS = (By.CSS_SELECTOR, "div[wized='projectStatus']")
 SECONDARY_LISTINGS = (By.CSS_SELECTOR,"[wized*='listingCard']")
 SALES_TAG = (By.XPATH, "//div[text()= 'Want to buy']")
+MARKET_LISTINGS = (By.CSS_SELECTOR, "a[wized='marketPageCard']")
+LICENSE_TAG = (By.CSS_SELECTOR, "div.license-block")
+
 
 
 
@@ -36,9 +39,13 @@ def verify_filter_status(context, expected_status):
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_partial_url("secondary-listings")
 
+# @then('Verify the right page opens')
+# def verify_right_page_opens(context):
+#     context.app.search_results_page.verify_partial_url("off-plan")
+
 @then('Verify the right page opens')
 def verify_right_page_opens(context):
-    context.app.search_results_page.verify_partial_url("off-plan")
+    context.app.search_results_page.verify_partial_url("market")
 
 
 @then('Verify there are 13 options for the settings')
@@ -70,5 +77,19 @@ def verify_all_card_tags(context):
 @then('Verify the price in all cards is inside the range {min_price} - {max_price}')
 def step_impl(context, min_price, max_price):
     context.app.search_results_page.verify_price_within_range(min_price, max_price)
+
+@then('Verify all cards has the license tag')
+def verify_tag(context):
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+    sleep(4)
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+
+    all_market_products = context.driver.find_elements(*MARKET_LISTINGS)
+
+    for product in all_market_products:
+        license_tag_text = product.find_elements(*LICENSE_TAG)[0].text.strip()
+        assert license_tag_text == "License", f'Expected "License"  but got {license_tag_text}'
+
+
 
 

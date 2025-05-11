@@ -25,3 +25,7 @@ def click_secondary(context):
 @when ('Click on off plan option at the left side menu')
 def click_off_plan(context):
     context.app.main_page.click_off_plan()
+
+@when ('Click on “market” at the left side menu')
+def click_market(context):
+    context.app.main_page.click_market()

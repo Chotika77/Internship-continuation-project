@@ -9,6 +9,7 @@ class MainPage(Page):
     SETTINGS_OPTION = (By.XPATH, "//div[text()='Settings']")
     SECONDARY_OPTION = (By.XPATH, "//div[text()='Secondary']")
     OFF_PLAN_OPTION = (By.XPATH, "//a[@href='/off-plan' and @class='menu-button-block w-inline-block']")
+    MARKET_OPTION = (By.XPATH, "//a[@href='/market-companies'][div[@class='g-menu-text' and text()='Market']]")
 
 
 
@@ -42,3 +43,8 @@ class MainPage(Page):
     def click_off_plan(self):
         self.click(*self.OFF_PLAN_OPTION)
         sleep(3)
+
+    def click_market(self):
+        self.click(*self.MARKET_OPTION)
+        sleep(3)
+
