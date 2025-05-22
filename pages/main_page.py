@@ -10,9 +10,7 @@ class MainPage(Page):
     SECONDARY_OPTION = (By.XPATH, "//div[text()='Secondary']")
     OFF_PLAN_OPTION = (By.XPATH, "//a[@href='/off-plan' and @class='menu-button-block w-inline-block']")
     MARKET_OPTION = (By.XPATH, "//a[@href='/market-companies'][div[@class='g-menu-text' and text()='Market']]")
-
-
-
+    VERIFICATION_OPTION = (By.XPATH, "//div[text()='Verification']")
 
     def open_main(self):
         self.open('https://soft.reelly.io/')
@@ -46,5 +44,9 @@ class MainPage(Page):
 
     def click_market(self):
         self.click(*self.MARKET_OPTION)
+        sleep(3)
+
+    def click_settings_option(self): #code duplication because of the behave step definition
+        self.click(*self.SETTINGS_OPTION)
         sleep(3)
 

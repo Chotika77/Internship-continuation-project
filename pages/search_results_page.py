@@ -9,6 +9,9 @@ class SearchResultsPage(Page):
     CONNECT_BUTTON = (By.XPATH, "//div[text()='Connect the company']")
     PRODUCT_CARD_LOCATOR = (By.CSS_SELECTOR, "div[wized='listingCardMLS'].listing-card")
     PRICE_LOCATOR_IN_CARD = (By.CSS_SELECTOR, "div[wized='unitPriceMLS']")
+    # UPLOAD_IMAGE_BUTTON = (By.XPATH, "//label[@class='upload-button-2' and @for='input_file']")
+    # NEXT_STEP_BUTTON = (By.XPATH, "//div[contains(text(), 'Next step')]")
+
 
     # def verify_page(self):
     #     self.verify_partial_url("settings")
@@ -19,8 +22,16 @@ class SearchResultsPage(Page):
     # def verify_page(self):
     #     self.verify_partial_url("off-plan")
 
+    # def verify_page(self):
+    #     self.verify_partial_url("market")
+
     def verify_page(self):
-        self.verify_partial_url("market")
+        self.verify_partial_url("verification")
+
+
+        
+
+
 
     def get_number_of_settings_options(self):
         options = self.find_elements(*self.SETTINGS_OPTIONS)

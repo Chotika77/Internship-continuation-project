@@ -8,6 +8,8 @@ SECONDARY_LISTINGS = (By.CSS_SELECTOR,"[wized*='listingCard']")
 SALES_TAG = (By.XPATH, "//div[text()= 'Want to buy']")
 MARKET_LISTINGS = (By.CSS_SELECTOR, "a[wized='marketPageCard']")
 LICENSE_TAG = (By.CSS_SELECTOR, "div.license-block")
+UPLOAD_IMAGE_BUTTON = (By.XPATH, "//label[@class='upload-button-2' and @for='input_file']")
+NEXT_STEP_BUTTON = (By.XPATH, "//div[contains(text(), 'Next step')]")
 
 
 
@@ -43,9 +45,25 @@ def verify_filter_status(context, expected_status):
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_partial_url("off-plan")
 
+# @then('Verify the right page opens')
+# def verify_right_page_opens(context):
+#     context.app.search_results_page.verify_partial_url("market")
+
 @then('Verify the right page opens')
 def verify_right_page_opens(context):
-    context.app.search_results_page.verify_partial_url("market")
+    context.app.search_results_page.verify_partial_url("verification")
+
+@then ('Verify “upload image” and “Next step” buttons are available')
+def verify_buttons(context):
+    upload_image_button = context.driver.find_element(*UPLOAD_IMAGE_BUTTON)
+    next_step_button = context.driver.find_element(*NEXT_STEP_BUTTON)
+
+    assert upload_image_button.is_displayed() == True, f'"Upload image" button expected to be visible but was not.'
+    assert next_step_button.is_displayed() == True, f'"Next step" button expected to be visible but was not.'
+
+
+
+
 
 
 @then('Verify there are 13 options for the settings')

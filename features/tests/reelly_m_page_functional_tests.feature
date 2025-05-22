@@ -59,4 +59,14 @@ Feature: Tests for the main page
     When Click on Developers filter at the top of the page
     Then Verify all cards has the license tag
 
+  Scenario:  User can click on verifications settings option and verify the right page opens
+    Given open the main page
+    When Log in to the page
+    When Click on “settings” at the left side menu
+    When Click on the verification option
+    Then Verify the right page opens
+    And  Verify “upload image” and “Next step” buttons are available
+
+
+
 

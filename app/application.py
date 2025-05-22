@@ -5,6 +5,7 @@ from pages.search_results_page import SearchResultsPage
 from pages.secondary_page import SecondaryPage
 from pages.off_plan_page import OffPlanPage
 from pages.market_page import MarketPage
+from pages.settings_page import SettingsPage
 
 class Application:
     def __init__(self, driver):
@@ -15,3 +16,4 @@ class Application:
         self.secondary_page = SecondaryPage(driver)
         self.off_plan_page = OffPlanPage(driver)
         self.market_page = MarketPage(driver)
+        self.settings_page = SettingsPage(driver)

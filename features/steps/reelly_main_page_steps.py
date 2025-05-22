@@ -29,3 +29,7 @@ def click_off_plan(context):
 @when ('Click on “market” at the left side menu')
 def click_market(context):
     context.app.main_page.click_market()
+
+@when ('Click on “settings” at the left side menu')
+def click_settings(context):
+    context.app.main_page.click_settings_option() #code duplication because of the behave step
