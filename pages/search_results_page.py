@@ -19,14 +19,14 @@ class SearchResultsPage(Page):
     # def verify_page(self):
     #     self.verify_partial_url("secondary-listings")
 
-    # def verify_page(self):
-    #     self.verify_partial_url("off-plan")
+    def verify_page(self):
+        self.verify_partial_url("off-plan")
 
     # def verify_page(self):
     #     self.verify_partial_url("market")
 
-    def verify_page(self):
-        self.verify_partial_url("verification")
+    # def verify_page(self):
+    #     self.verify_partial_url("verification")
 
 
         

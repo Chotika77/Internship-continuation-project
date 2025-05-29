@@ -7,8 +7,26 @@ from pages.base_page import Page
 class OffPlanPage(Page):
     NEXT_BUTTON_LOCATOR = (By.XPATH, "//div[text()='Next page']")
     PREVIOUS_BUTTON_LOCATOR = (By.XPATH,"//div[text()='Prev. page']")
+    FILTER_SELECTION = (By.ID, "Location-2")
+
+
     # TOTAL_PAGE_NUMBER_LOCATOR = (By.XPATH, "//div[@class='pagination-text']/div[@wized='totalPageProperties']")
     # CURRENT_PAGE_NUMBER_LOCATOR = (By.XPATH, "//div[@class='pagination-text']/div[@wized='currentPageProperties']")
+
+
+    def select_presale(self):
+      sleep(5)
+      dd = self.find_element(*self.FILTER_SELECTION)
+      select = Select(dd)
+      select.select_by_value("Presale(EOI)")
+      sleep(5)
+
+    def select_out_of_stock(self):
+      sleep(5)
+      dd = self.find_element(*self.FILTER_SELECTION)
+      select = Select(dd)
+      select.select_by_value("Out of stock")
+      sleep(5)
 
     # def get_active_page_number(self):
     #     return int(self.find_element(*self.CURRENT_PAGE_NUMBER_LOCATOR).text)
@@ -34,6 +52,16 @@ class OffPlanPage(Page):
         total_pages = 1
         for page in range(total_pages + 1):
             self.wait_to_be_clickable_click(*self.PREVIOUS_BUTTON_LOCATOR)
+
+
+    def select_announced(self):
+        sleep(5)
+        dd = self.find_element(*self.FILTER_SELECTION)
+        select = Select(dd)
+        select.select_by_value("Announced")
+        sleep(5)
+
+
 
 
     # def navigate_to_first_page(self):

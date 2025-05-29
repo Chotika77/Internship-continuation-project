@@ -1,6 +1,16 @@
 from behave import given, when, then
 from time import sleep
+from selenium.webdriver.support.ui import Select
 from pages.off_plan_page import OffPlanPage
+
+
+@when('change the filter to presale')
+def select_presale(context):
+    context.app.main_page.select_presale()
+
+@when('change the filter to Out of Stock')
+def select_out_of_stock(context):
+    context.app.main_page.select_out_of_stock()
 
 @when ('Go to the final page using the pagination button')
 def step_impl(context):
@@ -16,3 +26,7 @@ def step_impl(context):
     #     context.off_plan_page.navigate_to_previous_page()
     # print("Reached the first page.")
     context.off_plan_page.navigate_to_first_page()
+
+@when ('Filter by sale status of “Announced”')
+def step_impl(context):
+    context.app.off_plan_page.select_announced()

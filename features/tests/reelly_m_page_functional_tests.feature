@@ -67,6 +67,13 @@ Feature: Tests for the main page
     Then Verify the right page opens
     And  Verify “upload image” and “Next step” buttons are available
 
+  Scenario:  User can filter by Announced
+    Given open the main page
+    When Log in to the page
+    And Click on off plan option at the left side menu
+    Then Verify the right page opens
+    When Filter by sale status of “Announced”
+    Then Verify each product contains Announced
 
 
 

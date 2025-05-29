@@ -41,17 +41,17 @@ def verify_filter_status(context, expected_status):
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_partial_url("secondary-listings")
 
-# @then('Verify the right page opens')
-# def verify_right_page_opens(context):
-#     context.app.search_results_page.verify_partial_url("off-plan")
+@then('Verify the right page opens')
+def verify_right_page_opens(context):
+    context.app.search_results_page.verify_partial_url("off-plan")
 
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_partial_url("market")
 
-@then('Verify the right page opens')
-def verify_right_page_opens(context):
-    context.app.search_results_page.verify_partial_url("verification")
+# @then('Verify the right page opens')
+# def verify_right_page_opens(context):
+#     context.app.search_results_page.verify_partial_url("verification")
 
 @then ('Verify “upload image” and “Next step” buttons are available')
 def verify_buttons(context):
