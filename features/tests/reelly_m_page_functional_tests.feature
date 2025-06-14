@@ -76,4 +76,14 @@ Feature: Tests for the main page
     Then Verify each product contains Announced
 
 
+  Scenario:  User can see titles and pictures on each product inside the off plan page
+    Given open the main page
+    When Log in to the page
+    And Click on off plan option at the left side menu
+    Then Verify the right page opens
+    Then Verify each product on this page contains a title and picture visible
+
+
+
+
 

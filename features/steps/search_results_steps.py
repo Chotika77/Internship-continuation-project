@@ -10,6 +10,9 @@ MARKET_LISTINGS = (By.CSS_SELECTOR, "a[wized='marketPageCard']")
 LICENSE_TAG = (By.CSS_SELECTOR, "div.license-block")
 UPLOAD_IMAGE_BUTTON = (By.XPATH, "//label[@class='upload-button-2' and @for='input_file']")
 NEXT_STEP_BUTTON = (By.XPATH, "//div[contains(text(), 'Next step')]")
+PRODUCT_TITLES = (By.CSS_SELECTOR, "div[wized='projectName']")
+PRODUCT_IMAGES = (By.CSS_SELECTOR, "div[wized='projectImage']")
+
 
 
 
@@ -107,6 +110,22 @@ def verify_tag(context):
     for product in all_market_products:
         license_tag_text = product.find_elements(*LICENSE_TAG)[0].text.strip()
         assert license_tag_text == "License", f'Expected "License"  but got {license_tag_text}'
+
+
+@then('Verify each product on this page contains a title and picture visible')
+def verify_product_titles_and_pictures(context):
+    context.driver.execute_script("window.scrollBy(0, 2000)", "")
+    sleep(4)
+    context.driver.execute_script("window.scrollBy(0, 2000)", "")
+
+
+    titles = context.driver.find_elements(*PRODUCT_TITLES)
+    for title in titles:
+        assert title.is_displayed() == True, f'A product title was expected to be visible but was not.'
+
+    images = context.driver.find_elements(*PRODUCT_IMAGES)
+    for image in images:
+        assert image.is_displayed() == True, f'A product image was expected to be visible but was not.'
 
 
 
