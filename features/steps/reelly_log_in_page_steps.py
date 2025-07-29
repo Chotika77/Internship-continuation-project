@@ -5,3 +5,5 @@ from time import sleep
 @when('Log in to the page')
 def log_in_to_the_page(context):
     context.app.login_page.log_in()
+    context.app.dashboard_page.wait_until_dashboard_loaded()
+    # sleep(3)
