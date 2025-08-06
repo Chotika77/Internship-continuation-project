@@ -9,6 +9,7 @@ class SecondaryPage(Page):
     WANT_TO_BUY_BUTTON = (By. XPATH, "//div[text()='Want to buy']")
     # APPLY_FILTER = (By. XPATH, "//div[text()='Apply filter']")
 
+
     MIN_PRICE_INPUT = (By.XPATH, "//div[@class='select-text'][text()='from']/following-sibling::input[@type='text']")
     MAX_PRICE_INPUT = (By.XPATH,  "//div[@class='select-text'][text()='to']/following-sibling::input[@type='text']")
     APPLY_FILTER = (By.CSS_SELECTOR, "a[class ='button-filter w-button']")

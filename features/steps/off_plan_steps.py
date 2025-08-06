@@ -30,3 +30,13 @@ def step_impl(context):
 @when ('Filter by sale status of “Announced”')
 def step_impl(context):
     context.app.off_plan_page.select_announced()
+
+@when ('Filter off-plan products by price range from {min_price} to {max_price} AED')
+def step_off_plan_price_filter(context, min_price, max_price):
+    context.app.off_plan_page.click_apply_filter_bn()
+    context.app.off_plan_page.set_min_price_filter(min_price)
+    context.app.off_plan_page.set_max_price_filter(max_price)
+    context.app.off_plan_page.click_show_projects()
+
+
+

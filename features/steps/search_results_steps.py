@@ -2,6 +2,7 @@ from behave import given, when, then
 from time import sleep
 from selenium.webdriver.common.by import By
 
+
 LISTINGS = (By.CSS_SELECTOR, "a[wized='cardOfProperty']")
 SALES_STATUS = (By.CSS_SELECTOR, "div[wized='projectStatus']")
 SECONDARY_LISTINGS = (By.CSS_SELECTOR,"[wized*='listingCard']")
@@ -12,6 +13,7 @@ UPLOAD_IMAGE_BUTTON = (By.XPATH, "//label[@class='upload-button-2' and @for='inp
 NEXT_STEP_BUTTON = (By.XPATH, "//div[contains(text(), 'Next step')]")
 PRODUCT_TITLES = (By.CSS_SELECTOR, "div[wized='projectName']")
 PRODUCT_IMAGES = (By.CSS_SELECTOR, "div[wized='projectImage']")
+
 
 
 
@@ -46,7 +48,7 @@ def verify_filter_status(context, expected_status):
 
 @then('Verify the right page opens')
 def verify_right_page_opens(context):
-    context.app.search_results_page.verify_partial_url("off-plan")
+    context.app.search_results_page.verify_page()
 
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
@@ -126,6 +128,10 @@ def verify_product_titles_and_pictures(context):
     images = context.driver.find_elements(*PRODUCT_IMAGES)
     for image in images:
         assert image.is_displayed() == True, f'A product image was expected to be visible but was not.'
+
+    @then('Verify the price in all off-plan cards is inside the range {min_price} - {max_price}')
+    def step_impl(context, min_price, max_price):
+        context.app.search_results_page.verify_off_plan_price_within_range(min_price, max_price)
 
 
 

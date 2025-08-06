@@ -1,6 +1,8 @@
 from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from pages.base_page import Page
 
@@ -13,6 +15,8 @@ class SearchResultsPage(Page):
     # NEXT_STEP_BUTTON = (By.XPATH, "//div[contains(text(), 'Next step')]")
 
 
+
+
     # def verify_page(self):
     #     self.verify_partial_url("settings")
 
@@ -20,8 +24,12 @@ class SearchResultsPage(Page):
     #     self.verify_partial_url("secondary-listings")
 
     def verify_page(self):
-        self.verify_partial_url("off-plan")
+        # self.verify_partial_url("off-plan")
+        off_plan_header = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//button[normalize-space()='Off-plan']"))
+        )
 
+        assert off_plan_header.is_displayed(), "'Off-plan' page header not displayed"
     # def verify_page(self):
     #     self.verify_partial_url("market")
 
@@ -73,6 +81,28 @@ class SearchResultsPage(Page):
 
                     all_prices_within_range = False
                     assert all_prices_within_range, f"Not all product prices are within the range {lower_bound} - {upper_bound}"
+
+
+    def verify_off_plan_price_within_range(self, min_price, max_price):
+        sleep(5)
+        cards = self.get_all_product_cards()
+        lower_bound = int(min_price)
+        upper_bound = int(max_price)
+        print(lower_bound,upper_bound)
+
+        for card in cards:
+            price_value = self.get_price_from_card(card)
+            print(price_value)
+            if price_value is not None:
+                if price_value < lower_bound or price_value > upper_bound:
+                    price_element = card.find_element(*self.PRICE_LOCATOR_IN_CARD)
+                    print(
+                        f"Product price '{price_element.text.strip()}' ({price_value}) is outside the range {lower_bound} - {upper_bound}")
+
+
+                    all_prices_within_range = False
+                    assert all_prices_within_range, f"Not all product prices are within the range {lower_bound} - {upper_bound}"
+
 
 
 

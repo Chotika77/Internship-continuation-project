@@ -8,6 +8,10 @@ class OffPlanPage(Page):
     NEXT_BUTTON_LOCATOR = (By.XPATH, "//div[text()='Next page']")
     PREVIOUS_BUTTON_LOCATOR = (By.XPATH,"//div[text()='Prev. page']")
     FILTER_SELECTION = (By.ID, "Location-2")
+    NEW_APPLY_FILTER_BUTTON = (By.XPATH,"//button[text()='Search & filters']")
+    MIN_PRICE_INPUT = (By.XPATH,"//input[@name='priceMin' and @placeholder='From']")
+    MAX_PRICE_INPUT = (By.XPATH,"//input[@name='priceMax' and @placeholder='To']")
+    SHOW_PROJECTS_BUTTON = (By.XPATH,"//button[@type='submit' and contains(text(), 'Show')]")
 
 
     # TOTAL_PAGE_NUMBER_LOCATOR = (By.XPATH, "//div[@class='pagination-text']/div[@wized='totalPageProperties']")
@@ -118,3 +122,20 @@ class OffPlanPage(Page):
     #     previous_button = self.find_element(*self.PREVIOUS_BUTTON_LOCATOR)
     #     return 'disabled' not in previous_button.get_attribute('class') and previous_button.is_displayed()
     #
+    def click_apply_filter_bn(self):
+        self.click(*self.NEW_APPLY_FILTER_BUTTON)
+
+    def set_min_price_filter(self, price):
+        self.wait_for_element_to_appear(*self.MIN_PRICE_INPUT)
+        element = self.find_element(*self.MIN_PRICE_INPUT)
+        element.clear()
+        element.send_keys(price)
+
+    def set_max_price_filter(self, price):
+        self.wait_for_element_to_appear(*self.MAX_PRICE_INPUT)
+        element = self.find_element(*self.MAX_PRICE_INPUT)
+        element.clear()
+        element.send_keys(price)
+
+    def click_show_projects(self):
+        self.click(*self.SHOW_PROJECTS_BUTTON)
