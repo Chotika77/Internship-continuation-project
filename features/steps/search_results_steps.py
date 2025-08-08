@@ -129,8 +129,8 @@ def verify_product_titles_and_pictures(context):
     for image in images:
         assert image.is_displayed() == True, f'A product image was expected to be visible but was not.'
 
-    @then('Verify the price in all off-plan cards is inside the range {min_price} - {max_price}')
-    def step_impl(context, min_price, max_price):
+@then('Verify the price in all off-plan cards is inside the range {min_price} - {max_price}')
+def step_impl(context, min_price, max_price):
         context.app.search_results_page.verify_off_plan_price_within_range(min_price, max_price)
 
 
