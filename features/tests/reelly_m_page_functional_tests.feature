@@ -92,6 +92,14 @@ Feature: Tests for the main page
     Then Verify the price in all off-plan cards is inside the range 1200000 - 2000000
 
 
+  Scenario: User can open product detail and see three options of visualization
+    Given open the main page
+    When Log in to the page
+    And Click on off plan option at the left side menu
+    When Click on the first product
+    Then Verify the three options of visualization are “architecture”, or “interior”, or “lobby”
+    And Verify the visualization options are clickable
+
 
 
 

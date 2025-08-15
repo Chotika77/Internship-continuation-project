@@ -38,5 +38,15 @@ def step_off_plan_price_filter(context, min_price, max_price):
     context.app.off_plan_page.set_max_price_filter(max_price)
     context.app.off_plan_page.click_show_projects()
 
+@when("Click on the first product")
+def step_impl(context):
+    context.app.off_plan_page.click_first_product()
 
+@then('Verify the three options of visualization are “architecture”, or “interior”, or “lobby”')
+def step_impl(context):
+    context.app.off_plan_page.verify_visualization_option_names()
+
+@then("Verify the visualization options are clickable")
+def step_impl(context):
+    context.app.off_plan_page.verify_visualization_options_clickable()
 

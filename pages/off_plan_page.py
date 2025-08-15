@@ -1,6 +1,7 @@
 from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support import expected_conditions as EC
 
 from pages.base_page import Page
 
@@ -12,6 +13,9 @@ class OffPlanPage(Page):
     MIN_PRICE_INPUT = (By.XPATH,"//input[@name='priceMin' and @placeholder='From']")
     MAX_PRICE_INPUT = (By.XPATH,"//input[@name='priceMax' and @placeholder='To']")
     SHOW_PROJECTS_BUTTON = (By.XPATH,"//button[@type='submit' and contains(text(), 'Show')]")
+    FIRST_PRODUCT_LOCATOR = (By.XPATH, "(//div[contains(@class,'grid') and contains(@class,'justify-items-center')]//a)[1]")
+    VISUALIZATION_OPTIONS_LOCATOR = (By.CSS_SELECTOR, "div.tabs-menu-project [role='tab']")
+
 
 
     # TOTAL_PAGE_NUMBER_LOCATOR = (By.XPATH, "//div[@class='pagination-text']/div[@wized='totalPageProperties']")
@@ -139,3 +143,30 @@ class OffPlanPage(Page):
 
     def click_show_projects(self):
         self.click(*self.SHOW_PROJECTS_BUTTON)
+
+    def click_first_product(self):
+        self.wait_to_be_clickable_click(*self.FIRST_PRODUCT_LOCATOR)
+
+    def verify_visualization_option_names(self):
+        allowed = ["architecture", "interior", "lobby"]
+
+        options = self.wait.until(
+            EC.presence_of_all_elements_located(self.VISUALIZATION_OPTIONS_LOCATOR))
+
+        actual_names = []
+        for option in options:
+            name = option.text.strip().lower()
+            if not name:
+                name = (option.get_attribute("innerText") or "").strip().lower()
+            actual_names.append(name)
+
+        for name in actual_names:
+            assert name in allowed, f"Unexpected option: {name}. Expected one of {allowed}"
+
+    def verify_visualization_options_clickable(self):
+        options = self.wait.until(
+            EC.presence_of_all_elements_located(self.VISUALIZATION_OPTIONS_LOCATOR)
+        )
+
+        for option in options:
+            self.wait.until(EC.element_to_be_clickable(option))
