@@ -100,6 +100,26 @@ Feature: Tests for the main page
     Then Verify the three options of visualization are “architecture”, or “interior”, or “lobby”
     And Verify the visualization options are clickable
 
+  Scenario: User can open market tab and add company option
+    Given open the main page
+    When Log in to the page
+    When Click on “market” at the left side menu
+    Then Verify the right page opens
+    When Click on “Add Company” button
+#    Then Verify the right page opens
+#    And Verify  the button “Publish my company” is available
+
+
+  Scenario: User can open market tab and filter by Agents Offer
+    Given open the main page
+    When Log in to the page
+    When Click on “market” at the left side menu
+    Then Verify the right page opens
+    When Click on “Agent” option in the upper right corner
+    Then Verify all the offers shown have "Agent" tag
+
+
+
 
 
 

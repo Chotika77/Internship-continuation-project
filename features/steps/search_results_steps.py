@@ -13,6 +13,10 @@ UPLOAD_IMAGE_BUTTON = (By.XPATH, "//label[@class='upload-button-2' and @for='inp
 NEXT_STEP_BUTTON = (By.XPATH, "//div[contains(text(), 'Next step')]")
 PRODUCT_TITLES = (By.CSS_SELECTOR, "div[wized='projectName']")
 PRODUCT_IMAGES = (By.CSS_SELECTOR, "div[wized='projectImage']")
+OFFERS_LISTINGS = (By.CSS_SELECTOR, ".new-market-cards .new-market-card")
+OFFERS_TAGS = (By.XPATH, "//div[@wized='servicesOffersCardCientTagText']")
+
+
 
 
 
@@ -46,13 +50,13 @@ def verify_filter_status(context, expected_status):
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_partial_url("secondary-listings")
 
-@then('Verify the right page opens')
-def verify_right_page_opens(context):
-    context.app.search_results_page.verify_page()
-
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
-#     context.app.search_results_page.verify_partial_url("market")
+#     context.app.search_results_page.verify_off_plan_page()
+
+@then('Verify the right page opens')
+def verify_right_page_opens(context):
+    context.app.search_results_page.verify_market_page()
 
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
@@ -132,6 +136,24 @@ def verify_product_titles_and_pictures(context):
 @then('Verify the price in all off-plan cards is inside the range {min_price} - {max_price}')
 def step_impl(context, min_price, max_price):
         context.app.search_results_page.verify_off_plan_price_within_range(min_price, max_price)
+
+
+
+@then('Verify all the offers shown have "Agent" tag')
+def verify_agent_tag(context):
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+    sleep(4)
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+
+    all_offers_cards = context.driver.find_elements(*OFFERS_LISTINGS)
+    for offer in all_offers_cards:
+        status_tag_text = offer.find_elements(*OFFERS_TAGS)[0].text.strip()
+        assert status_tag_text == "Agent", f'Expected "Agent" but got {status_tag_text}'
+
+
+
+
+
 
 
 

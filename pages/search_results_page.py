@@ -23,15 +23,19 @@ class SearchResultsPage(Page):
     # def verify_page(self):
     #     self.verify_partial_url("secondary-listings")
 
-    def verify_page(self):
+    def verify_off_plan_page(self):
         # self.verify_partial_url("off-plan")
         off_plan_header = WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, "//button[normalize-space()='Off-plan']"))
         )
 
         assert off_plan_header.is_displayed(), "'Off-plan' page header not displayed"
-    # def verify_page(self):
-    #     self.verify_partial_url("market")
+
+    def verify_market_page(self):
+        # self.verify_partial_url("market")
+        market_header = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//div[@class='new-market-h1']")))
+        assert market_header.is_displayed(), "'market' page header not displayed"
+
 
     # def verify_page(self):
     #     self.verify_partial_url("verification")

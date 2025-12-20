@@ -14,7 +14,7 @@ class MainPage(Page):
     # OFF_PLAN_OPTION = (By.XPATH, "//a[contains(@href, 'off-plan')]")
     # OFF_PLAN_OPTION =(By.XPATH, "//a[.//span[normalize-space()='Off-plan']]")
     OFF_PLAN_OPTION = (By.CSS_SELECTOR, '[wized="loadUser"] a[wized="newOffPlanLink"]')
-    MARKET_OPTION = (By.XPATH, "//a[@href='/market-companies'][div[@class='g-menu-text' and text()='Market']]")
+    MARKET_OPTION = (By.XPATH, "//a[@href='/' and contains(@class,'menu-button-block')]")
     VERIFICATION_OPTION = (By.XPATH, "//div[text()='Verification']")
 
     def open_main(self):
