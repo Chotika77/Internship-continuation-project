@@ -119,6 +119,17 @@ Feature: Tests for the main page
     Then Verify all the offers shown have "Agent" tag
 
 
+  Scenario: User can access “My clients” tab and see the 7 options
+    Given open the main page
+    When Log in to the page
+    When Click on “settings” at the left side menu
+    And  Click on the “My clients” option
+    Then Verify the right page opens
+    Then Verify that the page contains the 7 options
+
+
+
+
 
 
 

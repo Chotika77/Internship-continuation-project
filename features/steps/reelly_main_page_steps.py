@@ -33,3 +33,6 @@ def click_market(context):
 @when ('Click on “settings” at the left side menu')
 def click_settings(context):
     context.app.main_page.click_settings_option() #code duplication because of the behave step
+
+
+

@@ -54,9 +54,13 @@ def verify_filter_status(context, expected_status):
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_off_plan_page()
 
+# @then('Verify the right page opens')
+# def verify_right_page_opens(context):
+#     context.app.search_results_page.verify_market_page()
+
 @then('Verify the right page opens')
 def verify_right_page_opens(context):
-    context.app.search_results_page.verify_market_page()
+    context.app.search_results_page.verify_my_clients_page()
 
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
@@ -149,6 +153,15 @@ def verify_agent_tag(context):
     for offer in all_offers_cards:
         status_tag_text = offer.find_elements(*OFFERS_TAGS)[0].text.strip()
         assert status_tag_text == "Agent", f'Expected "Agent" but got {status_tag_text}'
+
+
+@then('Verify that the page contains the 7 options')
+def verify_option_count(context):
+    actual_count = context.app.search_results_page.get_number_of_options()
+    expected_count = 7
+    assert actual_count == expected_count, \
+        f"Expected {expected_count} options, but found {actual_count}"
+
 
 
 

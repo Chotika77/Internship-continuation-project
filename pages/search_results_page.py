@@ -13,6 +13,9 @@ class SearchResultsPage(Page):
     PRICE_LOCATOR_IN_CARD = (By.CSS_SELECTOR, "div[wized='unitPriceMLS']")
     # UPLOAD_IMAGE_BUTTON = (By.XPATH, "//label[@class='upload-button-2' and @for='input_file']")
     # NEXT_STEP_BUTTON = (By.XPATH, "//div[contains(text(), 'Next step')]")
+    MY_CLIENTS_HEADER = (By.CSS_SELECTOR, 'a.menu-text-link-leaderboard[href="/my-fixations"]')
+    PAGE_OPTIONS = (By.CSS_SELECTOR, "div.tag-properties-block.wrap > div.tag-properties:not(.hidden")
+
 
 
 
@@ -107,6 +110,16 @@ class SearchResultsPage(Page):
                     all_prices_within_range = False
                     assert all_prices_within_range, f"Not all product prices are within the range {lower_bound} - {upper_bound}"
 
+
+
+
+    def verify_my_clients_page(self):
+        my_client_header = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((self.MY_CLIENTS_HEADER)))
+        assert my_client_header.is_displayed(), "'my client' header page header not displayed"
+
+    def get_number_of_options(self):
+        options = self.find_elements(*self.PAGE_OPTIONS)
+        return len(options)
 
 
 
