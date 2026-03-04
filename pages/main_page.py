@@ -13,7 +13,7 @@ class MainPage(Page):
     # OFF_PLAN_OPTION = (By.XPATH, "//a[@href='/off-plan' and @class='menu-button-block w-inline-block']")
     # OFF_PLAN_OPTION = (By.XPATH, "//a[contains(@href, 'off-plan')]")
     # OFF_PLAN_OPTION =(By.XPATH, "//a[.//span[normalize-space()='Off-plan']]")
-    OFF_PLAN_OPTION = (By.CSS_SELECTOR, '[wized="loadUser"] a[wized="newOffPlanLink"]')
+    OFF_PLAN_MENU = (By.XPATH, "//a[.//span[normalize-space()='Off-plan']]")
     MARKET_OPTION = (By.XPATH, "//a[@href='/' and contains(@class,'menu-button-block')]")
     VERIFICATION_OPTION = (By.XPATH, "//div[text()='Verification']")
 
@@ -61,7 +61,9 @@ class MainPage(Page):
         # WebDriverWait(self.driver, 10).until(
         #     EC.invisibility_of_element_located((By.XPATH, "//a[@wized='newOffPlanLink']"))
         # )
-        self.wait_to_be_clickable_click(*self.OFF_PLAN_OPTION)
+        # self.wait_to_be_clickable_click(*self.OFF_PLAN_MENU)
+        el = self.driver.find_element(*self.OFF_PLAN_MENU)
+        self.driver.execute_script("arguments[0].click();", el)
 
 
 

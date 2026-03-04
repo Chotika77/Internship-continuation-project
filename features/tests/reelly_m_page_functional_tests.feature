@@ -128,6 +128,16 @@ Feature: Tests for the main page
     Then Verify that the page contains the 7 options
 
 
+  Scenario: Verify "Off Plan" page navigation and "Recommended" product tags
+    Given open the main page
+    When Log in to the page
+    When Click on off plan option at the left side menu
+    Then Verify the right page opens
+    Then Verify  at least two products contain the Recommended tag
+
+
+
+
 
 
 

@@ -15,6 +15,7 @@ class SearchResultsPage(Page):
     # NEXT_STEP_BUTTON = (By.XPATH, "//div[contains(text(), 'Next step')]")
     MY_CLIENTS_HEADER = (By.CSS_SELECTOR, 'a.menu-text-link-leaderboard[href="/my-fixations"]')
     PAGE_OPTIONS = (By.CSS_SELECTOR, "div.tag-properties-block.wrap > div.tag-properties:not(.hidden")
+    PRODUCT_CARDS = (By.CSS_SELECTOR, 'a[data-test-id^="project-card-"]')
 
 
 
@@ -120,6 +121,14 @@ class SearchResultsPage(Page):
     def get_number_of_options(self):
         options = self.find_elements(*self.PAGE_OPTIONS)
         return len(options)
+
+    def get_number_of_recommended_products(self):
+        products = self.find_elements(*self.PRODUCT_CARDS)
+        count = 0
+        for product in products:
+            if "Recommended" in product.text:
+                count += 1
+        return count
 
 
 

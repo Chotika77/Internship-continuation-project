@@ -50,17 +50,17 @@ def verify_filter_status(context, expected_status):
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_partial_url("secondary-listings")
 
-# @then('Verify the right page opens')
-# def verify_right_page_opens(context):
-#     context.app.search_results_page.verify_off_plan_page()
+@then('Verify the right page opens')
+def verify_right_page_opens(context):
+    context.app.search_results_page.verify_off_plan_page()
 
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_market_page()
 
-@then('Verify the right page opens')
-def verify_right_page_opens(context):
-    context.app.search_results_page.verify_my_clients_page()
+# @then('Verify the right page opens')
+# def verify_right_page_opens(context):
+#     context.app.search_results_page.verify_my_clients_page()
 
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
@@ -161,6 +161,12 @@ def verify_option_count(context):
     expected_count = 7
     assert actual_count == expected_count, \
         f"Expected {expected_count} options, but found {actual_count}"
+
+
+@then('Verify  at least two products contain the Recommended tag')
+def verify_recommended_products(context):
+    count = context.app.search_results_page.get_number_of_recommended_products()
+    assert count >= 2, f"Expected at least 2 recommended products, but found {count}"
 
 
 
