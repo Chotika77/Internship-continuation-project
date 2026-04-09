@@ -1,5 +1,6 @@
 from behave import given, when, then
 from time import sleep
+from selenium.webdriver.common.by import By
 
 
 @given('open the main page')
@@ -32,6 +33,9 @@ def click_market(context):
 
 @when ('Click on “settings” at the left side menu')
 def click_settings(context):
+    sleep(30)
+    # context.driver.find_element(By.CSS_SELECTOR, 'a[href="https://soft.reelly.io/settings"][class*="peer/menu-button"]').click()
+    sleep(5)
     context.app.main_page.click_settings_option() #code duplication because of the behave step
 
 

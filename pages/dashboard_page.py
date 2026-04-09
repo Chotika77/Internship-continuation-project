@@ -20,3 +20,9 @@ class DashboardPage(Page):
     def wait_until_logged_in(self):
         WebDriverWait(self.driver, 15).until(
             EC.url_contains("find.reelly.io"))
+
+        # WebDriverWait(self.driver, 15).until(
+        #     EC.presence_of_element_located((By.CSS_SELECTOR, "div.menu-block"))
+        # )
+
+

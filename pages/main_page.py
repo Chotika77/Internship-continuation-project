@@ -8,7 +8,9 @@ from pages.base_page import Page
 
 class MainPage(Page):
     # FILTER_SELECTION = (By.ID, "Location-2")
-    SETTINGS_OPTION = (By.XPATH, "//div[text()='Settings']")
+    # SETTINGS_OPTION = (By.XPATH, "//div[text()='Settings']")
+    SETTINGS_OPTION = (By.CSS_SELECTOR, 'a[href="https://soft.reelly.io/settings"][class*="peer/menu-button"]')
+    SIDEBAR_MENU = (By.CSS_SELECTOR, "div[wized='loadUser']")
     SECONDARY_OPTION = (By.XPATH, "//div[text()='Secondary']")
     # OFF_PLAN_OPTION = (By.XPATH, "//a[@href='/off-plan' and @class='menu-button-block w-inline-block']")
     # OFF_PLAN_OPTION = (By.XPATH, "//a[contains(@href, 'off-plan')]")
@@ -72,7 +74,63 @@ class MainPage(Page):
         self.click(*self.MARKET_OPTION)
         sleep(3)
 
-    def click_settings_option(self): #code duplication because of the behave step definition
-        self.click(*self.SETTINGS_OPTION)
+    def click_settings_option(self):
+        # count = self.driver.execute_script(
+        #     "return document.querySelectorAll('a[href=\"/settings\"]').length"
+        # )
+        # print("JS count:", count)
+       # print("Page title:", self.driver.title)
+       # print("Page source has menu-block:", "menu-block" in self.driver.page_source)
+
+        # self.wait.until(lambda d: d.execute_script(
+        #     "return document.querySelectorAll('a[href=\"/settings\"]').length > 0"
+        # ))
+        # self.wait_to_be_clickable_click(*self.SETTINGS_OPTION)
+
+        sleep(10)
+        self.wait_to_be_clickable(*self.SETTINGS_OPTION)
+        self.wait_to_be_clickable_click(*self.SETTINGS_OPTION)
         sleep(3)
+
+        # settings = self.wait.until(
+        #     EC.presence_of_element_located(self.SETTINGS_OPTION)
+        # )
+        # self.driver.execute_script("arguments[0].scrollIntoView(true);", settings)
+        # sleep(1)
+        # settings.click()
+
+        # settings = WebDriverWait(self.driver, 10).until(
+        #     EC.presence_of_element_located(self.SETTINGS_OPTION)
+        # )
+        # print("Found:", settings.text)
+        # settings.click()
+
+        # settings = WebDriverWait(self.driver, 20).until(
+        #     EC.presence_of_element_located((By.XPATH, "//a[@href='/settings']"))
+        # )
+        # settings.click()
+
+
+            # sleep(5)
+            # print("URL:", self.driver.current_url)
+            # print("Found:", len(self.driver.find_elements(*self.SETTINGS_OPTION)))
+
+            #
+
+
+            # print("URL:", self.driver.current_url)
+            # print("readyState:", self.driver.execute_script("return document.readyState"))
+            # print("JS count:",
+            #   self.driver.execute_script("return document.querySelectorAll('a[href=\"/settings\"]').length"))
+
+    # def settings_exist(self,driver):
+    #     return driver.execute_script(
+    #         "return document.querySelectorAll('a[href=\"/settings\"]').length > 0"
+    #     )
+    #
+    # def click_settings_option(self):
+    #     self.wait.until(self.settings_exist)
+    #     self.wait_to_be_clickable_click(*self.SETTINGS_OPTION)
+
+
 

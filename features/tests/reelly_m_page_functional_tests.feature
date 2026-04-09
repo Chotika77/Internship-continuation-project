@@ -136,6 +136,19 @@ Feature: Tests for the main page
     Then Verify  at least two products contain the Recommended tag
 
 
+  Scenario: User can go to settings and edit the personal information
+    Given open the main page
+    When Log in to the page
+    When Click on “settings” at the left side menu
+    When Click on the Edit profile option
+    And Enter some test information in the input fields
+    Then Check the right information is present in the input fields
+    And Check the “Close” and “Save Changes” buttons are available and clickable
+
+
+
+
+
 
 
 

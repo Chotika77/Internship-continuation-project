@@ -10,3 +10,7 @@ def click_verification(context):
 def click_my_clients(context):
     context.app.settings_page.click_my_clients()
 
+
+@when('Click on the Edit profile option')
+def click_edit_profile(context):
+    context.app.settings_page.click_edit_profile()

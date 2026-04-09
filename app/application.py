@@ -7,6 +7,7 @@ from pages.off_plan_page import OffPlanPage
 from pages.market_page import MarketPage
 from pages.settings_page import SettingsPage
 from pages.dashboard_page import DashboardPage
+from pages.edit_page import EditPage
 
 class Application:
     def __init__(self, driver):
@@ -19,3 +20,4 @@ class Application:
         self.market_page = MarketPage(driver)
         self.settings_page = SettingsPage(driver)
         self.dashboard_page = DashboardPage(driver)
+        self.edit_page = EditPage(driver)
