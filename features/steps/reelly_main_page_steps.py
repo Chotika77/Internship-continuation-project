@@ -35,8 +35,9 @@ def click_market(context):
 def click_settings(context):
     sleep(30)
     # context.driver.find_element(By.CSS_SELECTOR, 'a[href="https://soft.reelly.io/settings"][class*="peer/menu-button"]').click()
-    sleep(5)
+    # sleep(5)
     context.app.main_page.click_settings_option() #code duplication because of the behave step
+
 
 
 

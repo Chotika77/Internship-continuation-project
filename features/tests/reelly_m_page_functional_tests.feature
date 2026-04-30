@@ -146,6 +146,19 @@ Feature: Tests for the main page
     And Check the “Close” and “Save Changes” buttons are available and clickable
 
 
+  Scenario: User can verify their referral link on the Dashboard
+    Given open the main page
+    When Log in to the page
+    When Click on “settings” at the left side menu
+    When Click on "My Clients" profile option
+    And  Go to "Dashboard" section
+    Then Verify that the right page is opened
+    And  Verify if the referral link contains "https://soft.reelly.io/sign-up"
+
+
+
+
+
 
 
 

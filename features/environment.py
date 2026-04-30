@@ -26,7 +26,7 @@ def browser_init(context, scenario_name):
     #     options=options,
     #     service=service
     # )
-
+    #
     # bs_user = 'davitchkuaseli_KSk4vy'
     # bs_key = 'yxxfCf9AtwmzcmQHxxjm'
     # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'

@@ -49,10 +49,10 @@ def verify_filter_status(context, expected_status):
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
 #     context.app.search_results_page.verify_partial_url("secondary-listings")
-
-@then('Verify the right page opens')
-def verify_right_page_opens(context):
-    context.app.search_results_page.verify_off_plan_page()
+#
+# @then('Verify the right page opens')
+# def verify_right_page_opens(context):
+#     context.app.search_results_page.verify_off_plan_page()
 
 # @then('Verify the right page opens')
 # def verify_right_page_opens(context):
@@ -167,6 +167,9 @@ def verify_option_count(context):
 def verify_recommended_products(context):
     count = context.app.search_results_page.get_number_of_recommended_products()
     assert count >= 2, f"Expected at least 2 recommended products, but found {count}"
+
+
+
 
 
 

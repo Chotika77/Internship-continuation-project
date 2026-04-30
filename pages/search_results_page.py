@@ -27,6 +27,9 @@ class SearchResultsPage(Page):
     # def verify_page(self):
     #     self.verify_partial_url("secondary-listings")
 
+
+
+
     def verify_off_plan_page(self):
         # self.verify_partial_url("off-plan")
         off_plan_header = WebDriverWait(self.driver, 10).until(

@@ -19,6 +19,7 @@ class MainPage(Page):
     MARKET_OPTION = (By.XPATH, "//a[@href='/' and contains(@class,'menu-button-block')]")
     VERIFICATION_OPTION = (By.XPATH, "//div[text()='Verification']")
 
+
     def open_main(self):
         self.open('https://soft.reelly.io/')
         sleep(3)
@@ -131,6 +132,11 @@ class MainPage(Page):
     # def click_settings_option(self):
     #     self.wait.until(self.settings_exist)
     #     self.wait_to_be_clickable_click(*self.SETTINGS_OPTION)
+
+
+
+
+
 
 
 
