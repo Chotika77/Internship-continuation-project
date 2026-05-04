@@ -156,6 +156,20 @@ Feature: Tests for the main page
     And  Verify if the referral link contains "https://soft.reelly.io/sign-up"
 
 
+  Scenario: User can access the "For agency" section in the settings and verify the presence of the "Contact us for details" form
+    Given open the main page
+    When Log in to the page
+    When Click on “settings” at the left side menu
+    When Click "For agency" option
+    Then Verify agency page opens
+    When Scroll down to the bottom of the page
+    Then Verify that the "Contact us for details" form is available
+
+
+
+
+
+
 
 
 

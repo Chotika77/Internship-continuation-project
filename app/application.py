@@ -10,6 +10,7 @@ from pages.dashboard_page import DashboardPage
 from pages.edit_page import EditPage
 from pages.clients_page import ClientsPage
 from pages.clients_dashboard_page import ClientsDashPage
+from pages.agency_page import AgencyPage
 
 class Application:
     def __init__(self, driver):
@@ -25,3 +26,4 @@ class Application:
         self.edit_page = EditPage(driver)
         self.clients_page = ClientsPage(driver)
         self.clients_dashboard_page = ClientsDashPage(driver)
+        self.agency_page = AgencyPage(driver)

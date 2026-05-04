@@ -18,3 +18,10 @@ def click_edit_profile(context):
 @when ('Click on "My Clients" profile option')
 def click_my_clients(context):
     context.app.settings_page.click_my_clients()
+
+@when ('Click "For agency" option')
+def click_forag(context):
+    context.app.settings_page.click_forag()
+
+
+

@@ -8,6 +8,8 @@ class SettingsPage(Page):
     # MY_CLIENTS_BUTTON = (By.XPATH, "//div[text()='My clients']")
     EDIT_PROFILE_BUTTON = (By.CSS_SELECTOR, 'a[href="/profile-edit"]')
     MY_CLIENTS_OPTION = (By.XPATH, "//div[text()='My clients']")
+    FOR_AGENCY_OPTION = (By.XPATH, "//div[text()='For agency']")
+
 
     def click_verification(self):
         self.click(*self.VERIFICATION_BUTTON)
@@ -22,5 +24,9 @@ class SettingsPage(Page):
 
     def click_my_clients(self):
         self.click(*self.MY_CLIENTS_OPTION)
+
+    def click_forag(self):
+        self.click(*self.FOR_AGENCY_OPTION)
+
 
 
