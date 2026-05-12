@@ -11,6 +11,8 @@ from pages.edit_page import EditPage
 from pages.clients_page import ClientsPage
 from pages.clients_dashboard_page import ClientsDashPage
 from pages.agency_page import AgencyPage
+from pages.project_page import ProjectPage
+
 
 class Application:
     def __init__(self, driver):
@@ -27,3 +29,4 @@ class Application:
         self.clients_page = ClientsPage(driver)
         self.clients_dashboard_page = ClientsDashPage(driver)
         self.agency_page = AgencyPage(driver)
+        self.project_page = ProjectPage(driver)

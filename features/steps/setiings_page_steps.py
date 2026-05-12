@@ -23,5 +23,11 @@ def click_my_clients(context):
 def click_forag(context):
     context.app.settings_page.click_forag()
 
+@when ('Click on Add a project')
+def click_add_project(context):
+    context.app.settings_page.click_add_project()
+
+
+
 
 

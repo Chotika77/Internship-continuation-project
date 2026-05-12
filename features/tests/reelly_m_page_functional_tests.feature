@@ -167,6 +167,19 @@ Feature: Tests for the main page
 
 
 
+  Scenario: User can add a project through the settings
+    Given open the main page
+    When Log in to the page
+    When Click on “settings” at the left side menu
+    When Click on Add a project
+    Then Verify that project page is opened
+    When Add some test information to the input fields
+    Then Verify the right information is present in the input fields
+    And  Verify the “Send an application” button is available and clickable
+
+
+
+
 
 
 

@@ -9,7 +9,7 @@ from pages.base_page import Page
 class MainPage(Page):
     # FILTER_SELECTION = (By.ID, "Location-2")
     # SETTINGS_OPTION = (By.XPATH, "//div[text()='Settings']")
-    SETTINGS_OPTION = (By.CSS_SELECTOR, 'a[href="https://soft.reelly.io/settings"][class*="peer/menu-button"]')
+    SETTINGS_OPTION = (By.XPATH, "//div[normalize-space()='test+davit+careearist']")
     SIDEBAR_MENU = (By.CSS_SELECTOR, "div[wized='loadUser']")
     SECONDARY_OPTION = (By.XPATH, "//div[text()='Secondary']")
     # OFF_PLAN_OPTION = (By.XPATH, "//a[@href='/off-plan' and @class='menu-button-block w-inline-block']")

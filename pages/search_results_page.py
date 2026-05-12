@@ -21,8 +21,8 @@ class SearchResultsPage(Page):
 
 
 
-    # def verify_page(self):
-    #     self.verify_partial_url("settings")
+    def verify_page(self):
+        self.verify_partial_url("settings")
 
     # def verify_page(self):
     #     self.verify_partial_url("secondary-listings")
